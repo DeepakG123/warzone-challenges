@@ -8,18 +8,22 @@ const Wrapper = styled.div`
    height: ${props => props.height};
 `;
 
+
  export default class Map extends React.Component{
    componentDidMount(){
+     var bounds = [[50,-30], [-45,100]];
      this.map = L.map('map', {
-       center: [10,10],
-       zoom:2,
+       center:[5,37],
+       zoom:4,
+       maxZoom:8,
+       minZoom:4,
+       maxBounds:[ [ 50, -30 ], [ -45, 100 ] ]
      });
-     L.tileLayer('https://assets.rockpapershotgun.com/images/2020/03/Verdansk-3k.jpg', {
-       detectRetina: true,
-     }).addTo(this.map);
+     //this.map.setMinZoom(this.map.getBoundsZoom([[0,85],[0,85]], true) );
+     L.imageOverlay('https://assets.rockpapershotgun.com/images/2020/03/Verdansk-3k-1212x1212.jpg', bounds).addTo(this.map);
    }
 
    render(){
-     return <Wrapper width="1280px" height="720px" id="map" />
+     return <Wrapper width="1212px" height="1212px" id="map" />
    }
  }
