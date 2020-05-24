@@ -13,7 +13,7 @@ const Wrapper = styled.div`
    componentDidMount(){
      var bounds = [[50,-30], [-45,100]];
      this.map = L.map('map', {
-       center:[5,37],
+       center:[5,37.5],
        zoom:4,
        maxZoom:8,
        minZoom:4,
@@ -21,6 +21,8 @@ const Wrapper = styled.div`
      });
      //this.map.setMinZoom(this.map.getBoundsZoom([[0,85],[0,85]], true) );
      L.imageOverlay('https://assets.rockpapershotgun.com/images/2020/03/Verdansk-3k-1212x1212.jpg', bounds).addTo(this.map);
+     var sol = L.latLng([ 10, 10 ]);
+     L.marker(sol).addTo(this.map);
    }
 
    render(){
